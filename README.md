@@ -1,1 +1,1 @@
-# qt_project
+# Labyrinths
