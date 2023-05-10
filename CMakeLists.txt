@@ -16,6 +16,10 @@ set(PROJECT_SOURCES
         main.cpp
         game.cpp
         game.h
+        gamescene.h gamescene.cpp
+        resources.qrc
+        labyrinth.h labyrinth.cpp
+        controller.h controller.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
