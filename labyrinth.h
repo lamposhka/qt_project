@@ -6,12 +6,12 @@
 #include <random>
 #include "time.h"
 
-class Labyrinth
+class Maze
 {
 public:
-    Labyrinth(size_t size = 5);
+    Maze(size_t size = 5);
 
-    void printLabyrinth();
+    void printMaze();
     const std::vector<std::vector<std::pair<bool, bool>>>& getWalls();
 
 private:

@@ -9,9 +9,9 @@ class Controller
 {
 public:
     Controller(const size_t size) : maze(size) {}
-    bool isTouchingMaze();
-//    std::vector<QLineF> generateDrawMaterial(const QSize sizeOfWindow);
-    Labyrinth maze;
+    bool isTouchingMaze(const QPointF point);
+    std::vector<QLineF> generateDrawMaterial( const size_t numOfPath, const size_t coef);
+    Maze maze;
 };
 
 #endif // CONTROLLER_H

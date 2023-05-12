@@ -1,7 +1,10 @@
 #include "labyrinth.h"
 
-Labyrinth::Labyrinth(const size_t size)
+Maze::Maze(const size_t size)
 {
+    if(size == 0) {
+        return;
+    }
     srand(time(nullptr));
     size_ = size;
     working_line_ = std::vector<size_t>(size, 0);
@@ -20,14 +23,14 @@ Labyrinth::Labyrinth(const size_t size)
 
 }
 
-void Labyrinth::emptyWorkingLine()
+void Maze::emptyWorkingLine()
 {
     for (auto &i: working_line_) {
         i = 0;
     }
 }
 
-void Labyrinth::assignUniqueSets()
+void Maze::assignUniqueSets()
 {
     for (auto &i: working_line_) {
         if (i == 0) {
@@ -37,7 +40,7 @@ void Labyrinth::assignUniqueSets()
     }
 }
 
-void Labyrinth::addVWalls(const size_t row)
+void Maze::addVWalls(const size_t row)
 {
     for (int col = 0; col < size_ - 1; ++col) {
         bool is_chosen = rand() % 2;
@@ -52,7 +55,7 @@ void Labyrinth::addVWalls(const size_t row)
     vert_hor_walls_[row][size_ - 1].first = true;
 }
 
-void Labyrinth::mergeSets(const size_t i, const size_t set)
+void Maze::mergeSets(const size_t i, const size_t set)
 {
     size_t temp = working_line_[i + 1];
     for (size_t col = 0; col < size_; ++col) {
@@ -62,7 +65,7 @@ void Labyrinth::mergeSets(const size_t i, const size_t set)
     }
 }
 
-void Labyrinth::addHWalls(const size_t row)
+void Maze::addHWalls(const size_t row)
 {
     for (int col = 0; col < size_; ++col) {
         bool is_chosen = rand() % 2;
@@ -76,7 +79,7 @@ void Labyrinth::addHWalls(const size_t row)
     }
 }
 
-bool Labyrinth::isUnique(const size_t set)
+bool Maze::isUnique(const size_t set)
 {
     int counter = 0;
     for (size_t i = 0; i < size_; ++i) {
@@ -87,7 +90,7 @@ bool Labyrinth::isUnique(const size_t set)
     return counter == 1;
 }
 
-void Labyrinth::checkedHorizontalWalls(const size_t row)
+void Maze::checkedHorizontalWalls(const size_t row)
 {
     for (size_t i = 0; i < size_; ++i) {
         int countHWalls = 0;
@@ -102,7 +105,7 @@ void Labyrinth::checkedHorizontalWalls(const size_t row)
     }
 }
 
-void Labyrinth::prepNewLine(const size_t row)
+void Maze::prepNewLine(const size_t row)
 {
     for (size_t i = 0; i < size_; ++i) {
         if (vert_hor_walls_[row][i].second) {
@@ -111,7 +114,7 @@ void Labyrinth::prepNewLine(const size_t row)
     }
 }
 
-void Labyrinth::addEndLine()
+void Maze::addEndLine()
 {
     assignUniqueSets();
     addVWalls(size_ - 1);
@@ -126,7 +129,7 @@ void Labyrinth::addEndLine()
 
 }
 
-void Labyrinth::printLabyrinth()
+void Maze::printMaze()
 {
     // upper border
     for (size_t i = 0; i < size_; ++i) {
@@ -160,7 +163,7 @@ void Labyrinth::printLabyrinth()
 
 }
 
-const std::vector<std::vector<std::pair<bool, bool> > >& Labyrinth::getWalls()
+const std::vector<std::vector<std::pair<bool, bool> > >& Maze::getWalls()
 {
     return vert_hor_walls_;
 }

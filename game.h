@@ -14,6 +14,5 @@ public:
     ~Game();
 private:
     GameScene *gameScene_;
-    Controller *controller_;
 };
 #endif // GAME_H
