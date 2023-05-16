@@ -14,12 +14,16 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        game.cpp
-        game.h
         gamescene.h gamescene.cpp
         resources.qrc
-        labyrinth.h labyrinth.cpp
+        model/maze.h model/maze.cpp
         controller.h controller.cpp
+        model/maze_generation.cpp
+        screen_stack/screenstack.h screen_stack/screenstack.cpp
+        mainmenu.h mainmenu.cpp
+        levelwidget.h levelwidget.cpp
+        game.h game.cpp
+        screencontroller.h screencontroller.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -1,11 +1,6 @@
 #include "controller.h"
 
-bool Controller::isTouchingMaze(const QPointF point)
-{
-    return true;
-}
-
-std::vector<QLineF> Controller::generateDrawMaterial( const size_t numOfPath, const size_t coef)
+std::vector<QLineF> Controller::generateField( const size_t numOfPath, const size_t coef)
 {
     std::vector<QLineF> result;
     result.push_back(QLineF({0, 0}, { numOfPath*coef , 0}));

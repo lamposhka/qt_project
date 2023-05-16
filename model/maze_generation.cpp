@@ -1,27 +1,4 @@
-#include "labyrinth.h"
-
-Maze::Maze(const size_t size)
-{
-    if(size == 0) {
-        return;
-    }
-    srand(time(nullptr));
-    size_ = size;
-    working_line_ = std::vector<size_t>(size, 0);
-    vert_hor_walls_ =
-        std::vector<std::vector<std::pair<bool, bool>>>(size, std::vector<std::pair<bool, bool>>(size, {false, false}));
-
-    emptyWorkingLine();
-    for (size_t i = 0; i < size - 1; ++i) {
-        assignUniqueSets();
-        addVWalls(i);
-        addHWalls(i);
-        checkedHorizontalWalls(i);
-        prepNewLine(i);
-    }
-    addEndLine();
-
-}
+#include "maze.h"
 
 void Maze::emptyWorkingLine()
 {
@@ -129,7 +106,8 @@ void Maze::addEndLine()
 
 }
 
-void Maze::printMaze()
+
+/*void Maze::printMaze()
 {
     // upper border
     for (size_t i = 0; i < size_; ++i) {
@@ -161,9 +139,31 @@ void Maze::printMaze()
         std::cout << std::endl;
     }
 
-}
+}*/
 
 const std::vector<std::vector<std::pair<bool, bool> > >& Maze::getWalls()
 {
     return vert_hor_walls_;
+}
+
+void Maze::generateMaze(const size_t size = 0)
+{
+    if(size == 0) {
+        return;
+    }
+    srand(time(nullptr));
+    size_ = size;
+    working_line_ = std::vector<size_t>(size, 0);
+    vert_hor_walls_ =
+        std::vector<std::vector<std::pair<bool, bool>>>(size, std::vector<std::pair<bool, bool>>(size, {false, false}));
+
+    emptyWorkingLine();
+    for (size_t i = 0; i < size - 1; ++i) {
+        assignUniqueSets();
+        addVWalls(i);
+        addHWalls(i);
+        checkedHorizontalWalls(i);
+        prepNewLine(i);
+    }
+    addEndLine();
 }
