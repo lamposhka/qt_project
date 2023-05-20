@@ -9,9 +9,9 @@ ScreenController::ScreenController(QWidget *parent) : ScreenStack(parent)
     push(mainMenu_);
 
     game_ = new Game(this);
-    connect(game_, SIGNAL(back()),  this, SLOT(onBackSelected()));
-    connect(game_, SIGNAL(finished(int)), this, SLOT(onFinished()));
-    connect(game_, SIGNAL(help()), this, SLOT(onHelpSelected()));
+    connect(game_, SIGNAL(back()),  this, SLOT(pop()));
+    connect(game_, SIGNAL(finished(bool)), this, SLOT(on_finished(bool)));
+    connect(game_, SIGNAL(help()), this, SLOT(on_help_selected()));
     game_->hide();
 
 }
@@ -21,9 +21,8 @@ void ScreenController::onLevelSelected()
     push(game_);
 }
 
-void ScreenController::onFinished()
+void ScreenController::onFinished(bool win)
 {
-    pop();
 }
 
 void ScreenController::onHelpSelected()
@@ -33,8 +32,10 @@ void ScreenController::onHelpSelected()
 
 void ScreenController::onBackSelected()
 {
-
+//    mainMenu_->show();
+//    push(mainMenu_);
     pop();
+    this->front().show();
 }
 
 void ScreenController::onSettingsSelected()
@@ -45,8 +46,8 @@ void ScreenController::onSettingsSelected()
 void ScreenController::onStartSelected()
 {
     game_ = new Game(this);
-    connect(game_, SIGNAL(back()),  this, SLOT(onBackSelected()));
-    connect(game_, SIGNAL(finished(int)), this, SLOT(onFinished()));
-    connect(game_, SIGNAL(help()), this, SLOT(onHelpSelected()));
+    connect(game_, SIGNAL(back()),  this, SLOT(pop()));
+    connect(game_, SIGNAL(finished(bool)), this, SLOT(on_finished(bool)));
+    connect(game_, SIGNAL(help()), this, SLOT(on_help_selected()));
     push(game_);
 }

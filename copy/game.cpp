@@ -9,12 +9,11 @@
 Game::Game(QWidget *parent)
     : QWidget{parent}
 {
+    gameField_.setFixedSize(781, 781);
     QPen pen(Qt::SolidLine);
     pen.setWidth(3);
-    gameField_ = new GameField(numOfPath_, 780/numOfPath_, pen);
-    gameField_->setFixedSize(781, 781);
-    gameField_->setSceneRect(0, 0, gameField_->contentsRect().width(), gameField_->contentsRect().height());
-//    gameField_.setMazeParameters(numOfPath_, 780/numOfPath_, pen);
+//    scene_.drawNewMaze(numOfPath_, 780/numOfPath_, pen);
+    gameField_.setMazeParameters(numOfPath_, 780/numOfPath_, pen);
 
 
 
@@ -35,25 +34,19 @@ Game::Game(QWidget *parent)
     upperWidgets->setContentsMargins(5, 5, 5, 1);
 
     layout->addLayout(upperWidgets);
-    layout->addWidget(gameField_);
+    layout->addWidget(&gameField_);
     layout->setMargin(0);
 
 
     setFixedSize(layout->sizeHint().width(), layout->sizeHint().height());
 
-    gameField_->setFocus();
-
-    updateTimer_ = new QTimer();
-    updateTimer_->setInterval(10);
+    gameField_.setFocus();
 
 
 
     connect(back, SIGNAL(clicked()), this, SIGNAL(back()));
     connect(help, SIGNAL(clicked()), this, SIGNAL(help()));
 
-    connect(gameField_, SIGNAL(endGame(int)), this, SIGNAL(finished(int)));
-    connect(gameField_, SIGNAL(startTimer()), this, SLOT(onStart()));
-    connect(updateTimer_, SIGNAL(timeout()), this, SLOT(onTimer()));
 }
 
 void Game::setup(size_t numOfPaths = 0)
@@ -63,13 +56,15 @@ void Game::setup(size_t numOfPaths = 0)
 
 void Game::onStart()
 {
-    updateTimer_->start();
-    elapsedTimer_.start();
+
+}
+
+void Game::onFinished()
+{
+
 }
 
 void Game::onTimer()
 {
-    int secs = elapsedTimer_.elapsed()/ 1000;
-    QString time = QVariant(secs).toString() + " sec";
-    timerLable_->setText(time);
+    timerLable_->setText("hello");
 }

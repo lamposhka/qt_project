@@ -12,7 +12,7 @@ public:
     explicit ScreenController(QWidget *parent = nullptr);
 public slots:
     void onLevelSelected();
-    void onFinished();
+    void onFinished(bool win);
     void onHelpSelected();
     void onBackSelected();
     void onSettingsSelected();

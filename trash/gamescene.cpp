@@ -6,7 +6,6 @@ GameScene::GameScene(QObject *parent) : QGraphicsScene(parent)
 {
     controller = new Controller(0);
     cursor_ = new QGraphicsEllipseItem(0, 0, 3, 3);
-//    player = addPixmap(QPixmap(":/images/texture.gif"));
     addItem(cursor_);
 }
 

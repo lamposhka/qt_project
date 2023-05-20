@@ -17,17 +17,17 @@ public:
     void setup(size_t numOfPaths);
 protected slots:
     void onStart();
+    void onFinished();
     void onTimer();
 signals:
-    void finished(int time);
+    void finished(bool win);
     void back();
     void exit();
     void help();
 protected:
-    size_t numOfPath_ = 2;
-    GameField* gameField_;
-    QTimer* updateTimer_;
-    QElapsedTimer elapsedTimer_;
+    size_t numOfPath_ = 20;
+    GameField gameField_;
+    QTimer timer_;
     QLabel* timerLable_;
 };
 
