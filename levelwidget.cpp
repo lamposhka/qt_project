@@ -8,7 +8,7 @@ LevelWidget::LevelWidget(QWidget *parent)
 {
     QGridLayout *layout = new QGridLayout(this);
     std::vector<QPushButton*> levels = {
-        new BasicStyledButton(this), new BasicStyledButton(this), new BasicStyledButton(this)
+        new BasicStyledButton(this), new BasicStyledButton(this), new BasicStyledButton(this), new BasicStyledButton(this)
     };
     for (auto i = 0; i < levels.size(); ++i) {
         layout->addWidget(levels[i], 0, i);

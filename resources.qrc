@@ -5,4 +5,8 @@
     <qresource prefix="/fonts">
         <file>ARCADECLASSIC.TTF</file>
     </qresource>
+    <qresource prefix="/animation">
+        <file>congratulations.mp4</file>
+        <file>scary-creepy.mp4</file>
+    </qresource>
 </RCC>

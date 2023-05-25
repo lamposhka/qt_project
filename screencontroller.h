@@ -3,6 +3,7 @@
 #include "screen_stack/screenstack.h"
 #include "game.h"
 #include "mainmenu.h"
+#include "winnerwidget.h"
 
 
 class ScreenController : public ScreenStack
@@ -23,6 +24,7 @@ protected:
 private:
     Game* game_;
     MainMenu* mainMenu_;
+    WinnerWidget* winnerWidget_;
 };
 
 #endif // SCREENCONTROLLER_H

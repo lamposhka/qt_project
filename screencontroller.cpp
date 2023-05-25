@@ -14,6 +14,9 @@ ScreenController::ScreenController(QWidget *parent) : ScreenStack(parent)
     connect(game_, SIGNAL(help()), this, SLOT(onHelpSelected()));
     game_->hide();
 
+    winnerWidget_ = new WinnerWidget(this);
+    winnerWidget_->hide();
+
 }
 
 void ScreenController::onLevelSelected()
@@ -24,13 +27,15 @@ void ScreenController::onLevelSelected()
 
 void ScreenController::onFinished()
 {
-    mainMenu_->show();
-    push(mainMenu_);
+    winnerWidget_->show();
+    push(winnerWidget_);
     this->adjustSize();
 }
 
 void ScreenController::onHelpSelected()
 {
+    winnerWidget_->show();
+    push(winnerWidget_);
     this->adjustSize();
 }
 
