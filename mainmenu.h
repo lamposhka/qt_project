@@ -12,7 +12,6 @@ public:
 signals:
     void settingsSelected();
     void helpSelected();
-
     void startSelected();
 protected:
     LevelWidget* levelWidget_;

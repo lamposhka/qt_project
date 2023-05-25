@@ -2,4 +2,7 @@
     <qresource prefix="/images">
         <file>texture.gif</file>
     </qresource>
+    <qresource prefix="/fonts">
+        <file>ARCADECLASSIC.TTF</file>
+    </qresource>
 </RCC>

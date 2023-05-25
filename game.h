@@ -24,7 +24,7 @@ signals:
     void exit();
     void help();
 protected:
-    size_t numOfPath_ = 2;
+    size_t numOfPath_ = 15;
     GameField* gameField_;
     QTimer* updateTimer_;
     QElapsedTimer elapsedTimer_;

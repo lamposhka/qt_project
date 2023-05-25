@@ -5,6 +5,7 @@
 
 GameField::GameField(const size_t numOfPath, const size_t stretch, QPen pen, QWidget *parent) : QGraphicsView(parent)
 {
+    setBackgroundBrush(Qt::black);
     pen_ = pen;
     stretch_ = stretch;
     numOfPath_ = numOfPath;
@@ -15,6 +16,7 @@ GameField::GameField(const size_t numOfPath, const size_t stretch, QPen pen, QWi
     setScene(scene_);
 
     cursor_ = new QGraphicsEllipseItem(-3, -3, 6, 6);
+    cursor_->setPen(pen_);
     cursor_->setPos(stretch_*0.5, stretch*0.5);
 
 

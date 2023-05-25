@@ -24,6 +24,7 @@ set(PROJECT_SOURCES
         game.h game.cpp
         screencontroller.h screencontroller.cpp
         gamefield.h gamefield.cpp
+        buttons/basicbutton.h buttons/basicbutton.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

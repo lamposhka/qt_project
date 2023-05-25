@@ -1,5 +1,5 @@
 #include "game.h"
-#include <QPushButton>
+#include "buttons/basicbutton.h"
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -9,7 +9,14 @@
 Game::Game(QWidget *parent)
     : QWidget{parent}
 {
+
+    QPalette p = palette();
+    p.setColor(QPalette::Window, Qt::black);
+    setAutoFillBackground(true);
+    setPalette(p);
+
     QPen pen(Qt::SolidLine);
+    pen.setColor(Qt::white);
     pen.setWidth(3);
     gameField_ = new GameField(numOfPath_, 780/numOfPath_, pen);
     gameField_->setFixedSize(781, 781);
@@ -18,9 +25,9 @@ Game::Game(QWidget *parent)
 
 
 
-    QPushButton* back = new QPushButton("back", this);
+    BasicStyledButton* back = new BasicStyledButton("back", this);
     back->setFixedSize(50, 30);
-    QPushButton* help = new QPushButton("help", this);
+    BasicStyledButton* help = new BasicStyledButton("help", this);
     help->setFixedSize(50, 30);
     timerLable_ = new QLabel("Press enter to begin.");
     timerLable_->setAlignment(Qt::AlignCenter);

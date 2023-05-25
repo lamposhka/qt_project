@@ -19,22 +19,26 @@ ScreenController::ScreenController(QWidget *parent) : ScreenStack(parent)
 void ScreenController::onLevelSelected()
 {
     push(game_);
+    this->adjustSize();
 }
 
 void ScreenController::onFinished()
 {
-    pop();
+    mainMenu_->show();
+    push(mainMenu_);
+    this->adjustSize();
 }
 
 void ScreenController::onHelpSelected()
 {
-    push(game_);
+    this->adjustSize();
 }
 
 void ScreenController::onBackSelected()
 {
-
-    pop();
+    mainMenu_->show();
+    push(mainMenu_);
+    this->adjustSize();
 }
 
 void ScreenController::onSettingsSelected()
@@ -49,4 +53,5 @@ void ScreenController::onStartSelected()
     connect(game_, SIGNAL(finished(int)), this, SLOT(onFinished()));
     connect(game_, SIGNAL(help()), this, SLOT(onHelpSelected()));
     push(game_);
+    this->adjustSize();
 }
