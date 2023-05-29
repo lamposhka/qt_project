@@ -9,13 +9,25 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Multimedia MultimediaWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets  Multimedia MultimediaWidgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        game.cpp
-        game.h
+        mode.h
+        resources.qrc
+        buttons/levelmodebutton.h buttons/levelmodebutton.cpp
+        model/maze.h model/maze.cpp
+        controller.h controller.cpp
+        model/maze_generation.cpp
+        screen_stack/screenstack.h screen_stack/screenstack.cpp
+        mainmenu.h mainmenu.cpp
+        levelwidget.h levelwidget.cpp
+        game.h game.cpp
+        screencontroller.h screencontroller.cpp
+        gamefield.h gamefield.cpp
+        buttons/basicbutton.h buttons/basicbutton.cpp
+        winnerwidget.h winnerwidget.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -41,7 +53,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(labyrinths PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(labyrinths PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Multimedia  Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
 
 set_target_properties(labyrinths PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
