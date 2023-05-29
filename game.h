@@ -8,18 +8,20 @@
 #include <QElapsedTimer>
 #include "gamefield.h"
 #include <QLabel>
+#include "mode.h"
 
 class Game : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Game(QWidget *parent = nullptr);
-    void setup(size_t numOfPaths);
+    explicit Game(Mode mode, QWidget *parent = nullptr);
+    QString Time();
 protected slots:
     void onStart();
     void onTimer();
+    void onFinished();
 signals:
-    void finished(int time);
+    void finished();
     void back();
     void exit();
     void help();

@@ -2,13 +2,8 @@
 #define LEVELWIDGET_H
 
 #include <QWidget>
-
-enum Mode {
-    EASY = 6,
-    MEDIUM = 15,
-    HARD = 30,
-    RANDOM
-};
+#include "mode.h"
+#include "buttons/levelmodebutton.h"
 
 class LevelWidget : public QWidget
 {
@@ -19,8 +14,9 @@ public:
 public slots:
     void onPick();
 signals:
+    void pickedLevel();
 private:
-    Mode mode_ = EASY;
+    LevelModeButton* pickedButton_;
 };
 
 #endif // LEVELWIDGET_H

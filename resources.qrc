@@ -1,12 +1,14 @@
 <RCC>
-    <qresource prefix="/images">
-        <file>texture.gif</file>
-    </qresource>
+    <qresource prefix="/images"/>
     <qresource prefix="/fonts">
         <file>ARCADECLASSIC.TTF</file>
     </qresource>
-    <qresource prefix="/animation">
-        <file>congratulations.mp4</file>
-        <file>scary-creepy.mp4</file>
+    <qresource prefix="/animation"/>
+    <qresource prefix="/music">
+        <file>playlist/Plantasia.mp3</file>
+        <file>playlist/Music_to_Soothe_the_Savage_Snake_Plant.mp3</file>
+        <file>playlist/sellamusicnet_Mort_Garson_-_Rhapsody_in_Green_65350151.mp3</file>
+        <file>playlist/button-46.wav</file>
+        <file>playlist/button-50.wav</file>
     </qresource>
 </RCC>

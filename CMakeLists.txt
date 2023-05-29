@@ -14,7 +14,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets  Multimedia Multi
 
 set(PROJECT_SOURCES
         main.cpp
+        mode.h
         resources.qrc
+        buttons/levelmodebutton.h buttons/levelmodebutton.cpp
         model/maze.h model/maze.cpp
         controller.h controller.cpp
         model/maze_generation.cpp

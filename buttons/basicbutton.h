@@ -2,6 +2,7 @@
 #define BASICSTYLEDBUTTON_H
 
 #include <QPushButton>
+#include <QSoundEffect>
 
 class BasicStyledButton : public QPushButton
 {
@@ -11,6 +12,7 @@ public:
     BasicStyledButton(QWidget *parent = nullptr);
 private:
     void setStyle();
+    QSoundEffect* effect;
 };
 
 #endif // BASICSTYLEDBUTTON_H

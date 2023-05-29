@@ -11,6 +11,8 @@ GameField::GameField(const size_t numOfPath, const size_t stretch, QPen pen, QWi
     numOfPath_ = numOfPath;
     controller_ = new Controller(numOfPath_, stretch_);
 
+//    setFrameRect(QFrame::NoFrame);
+
 
     scene_ = new QGraphicsScene(this);
     setScene(scene_);
@@ -31,7 +33,7 @@ GameField::GameField(const size_t numOfPath, const size_t stretch, QPen pen, QWi
     drawMaze();
 
     timer_ = new QTimer(this);
-    timer_->setInterval(50);
+    timer_->setInterval(3*numOfPath_);
     timer_->start();
     connect(timer_, SIGNAL(timeout()), this, SLOT(onTimer()));
 }
@@ -85,6 +87,7 @@ void GameField::onTimer()
     cursor_->moveBy(6*controller_->particularShift.first, 0);
     if(cursor_->collidesWithItem(finish_)) {
         emit endGame(true);
+        timer_->stop();
     } else if(cursor_->collidingItems().size()) {
         cursor_->moveBy(-6*controller_->particularShift.first, 0);
     }

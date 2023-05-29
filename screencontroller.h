@@ -4,6 +4,7 @@
 #include "game.h"
 #include "mainmenu.h"
 #include "winnerwidget.h"
+#include <QMediaPlayer>
 
 
 class ScreenController : public ScreenStack
@@ -14,17 +15,19 @@ public:
 public slots:
     void onLevelSelected();
     void onFinished();
-    void onHelpSelected();
     void onBackSelected();
-    void onSettingsSelected();
 
     void onStartSelected();
+    void onExitSelected();
 protected:
 
 private:
     Game* game_;
     MainMenu* mainMenu_;
     WinnerWidget* winnerWidget_;
+    bool music_ = true;
+    QMediaPlayer* player_;
+    QMediaPlaylist *playlist_;
 };
 
 #endif // SCREENCONTROLLER_H

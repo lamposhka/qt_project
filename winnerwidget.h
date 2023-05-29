@@ -7,11 +7,11 @@ class WinnerWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit WinnerWidget(QWidget *parent = nullptr);
+    explicit WinnerWidget(QString time, QWidget *parent = nullptr);
 
 signals:
-
-
+    void exit();
+    void back();
 };
 
 #endif // WINNERWIDGET_H

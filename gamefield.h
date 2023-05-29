@@ -29,7 +29,7 @@ private:
     QGraphicsScene* scene_;
     Controller* controller_;
     size_t numOfPath_;
-    size_t stretch_;
+    int stretch_;
     QPen pen_;
     bool is_start = false;
     QTimer* timer_;
